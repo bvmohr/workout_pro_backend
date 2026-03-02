@@ -10,32 +10,34 @@ This project consists of the `Express server` that runs 'Workout Pro' applicatio
 
 ### Start Guide
 
-1. Clone the repo & navigate to the root of the directory
+1. Clone the repo
 ```bash
 git clone 
 ```
-2. Start the server
+2. Navigate to the root of the directory and install dependencies
+```bash
+npm install
+```
+3. Start the server
 ```bash
 npm start
 ```
-3. Split your terminal to send `curl` requests. Register a new account in the application
+4. Split your terminal to send `curl` requests. Register a new account in the application
 ```bash
 curl -X POST http://localhost:8080/register \
   -H "Content-Type: application/json" \
   -d '{"username": "jonSnow", "password": "pwd123"}'
 ```
-4. Login into the application
+5. Login into the application
 ```bash
 curl -X POST http://localhost:8080/login \
   -H "Content-Type: application/json" \
   -c cookies.txt \
   -d '{"username": "jonSnow", "password": "pwd123"}'
 ```
-5. View the workouts provided
+6. View the workouts provided
 ```bash
 curl -X GET http://localhost:8080/workouts -b cookies.txt
 ```
 
 ## Aditional Notes
-
-***NOTE:*** For some reason session is not storing username to view `/workouts` endpoint
