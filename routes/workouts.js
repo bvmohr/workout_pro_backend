@@ -1,23 +1,13 @@
 const express = require('express');
-const router = express.Router();
+const workoutRouter = express.Router();
+const { workouts } = require('../database/db');
 
-let workouts = {
-    "Push Day": "Chest & Triceps",
-    "Pull Day": "Back & Biceps",
-    "Leg Day": "Legs & Abs"
-};
 
-/**
- * @description GET: Retreive all workouts
- */
-router.get('/', (req, res) => {
+workoutRouter.get('/', (req, res) => {
     res.send(JSON.stringify(workouts, null, 4));
 });
 
-/**
- * @description GET: Retreive workout by day
- */
-router.get('/:day', (req, res) => {
+workoutRouter.get('/:day', (req, res) => {
     const {day} = req.params;
     if (workouts[day]) {
         res.send(workouts[day]);
@@ -26,4 +16,4 @@ router.get('/:day', (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = workoutRouter;
