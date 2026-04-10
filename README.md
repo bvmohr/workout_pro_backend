@@ -29,20 +29,20 @@ docker run --name wp_server -d -p 3000:3000 workout:server
 ## Usage
 1. Split your terminal to send `curl` requests. Register a new account in the application
 ```bash
-curl -X POST http://localhost:8080/register \
+curl -X POST http://localhost:3000/register \
   -H "Content-Type: application/json" \
   -d '{"username": "jonSnow", "password": "pwd123"}'
 ```
 2. Login into the application
 ```bash
-curl -X POST http://localhost:8080/login \
+curl -X POST http://localhost:3000/login \
   -H "Content-Type: application/json" \
   -c cookies.txt \
   -d '{"username": "jonSnow", "password": "pwd123"}'
 ```
 3. View the workouts provided
 ```bash
-curl -X GET http://localhost:8080/workouts -b cookies.txt
+curl -X GET http://localhost:3000/workouts -b cookies.txt
 ```
 
 ## Aditional Notes
