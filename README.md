@@ -6,38 +6,45 @@
 ***Contributor***: Brian Mohr
 
 ## Summary
-This project consists of the `Express server` that runs 'Workout Pro' application. 
+This project consists of the `Express.js` server that runs the backend for the *Workout Pro* application. 
 
-### Start Guide
+## Prerequisites
+- Must have [Docker](https://docs.docker.com/desktop/) installed
+- Be familiar with making API requests with either `curl` or [`Postman`]()
 
+## Setup
 1. Clone the repo
 ```bash
-git clone 
+git clone https://github.com/bvmohr/workout_pro_backend.git
 ```
-2. Navigate to the root of the directory and install dependencies
+2. Navigate to the root of the directory and build the image
 ```bash
-npm install
+docker build -t workout:server .
 ```
-3. Start the server
+3. Run the container
 ```bash
-npm start
+docker run --name wp_server -d -p 3000:3000 workout:server
 ```
-4. Split your terminal to send `curl` requests. Register a new account in the application
+
+## Usage
+1. Split your terminal to send `curl` requests. Register a new account in the application
 ```bash
 curl -X POST http://localhost:8080/register \
   -H "Content-Type: application/json" \
   -d '{"username": "jonSnow", "password": "pwd123"}'
 ```
-5. Login into the application
+2. Login into the application
 ```bash
 curl -X POST http://localhost:8080/login \
   -H "Content-Type: application/json" \
   -c cookies.txt \
   -d '{"username": "jonSnow", "password": "pwd123"}'
 ```
-6. View the workouts provided
+3. View the workouts provided
 ```bash
 curl -X GET http://localhost:8080/workouts -b cookies.txt
 ```
 
 ## Aditional Notes
+
+When making `curl` requests, be sure to have `cookies.txt` when making additional requests after registering.
